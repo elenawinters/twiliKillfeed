@@ -31,7 +31,7 @@ onNet('twiliKillfeed:notify_update', (suspect, victim, weaponHash, damageType, d
     // console.log(`${suspectName} killed ${victimName} with ${weaponHash}. DamageType(${getKeyByValue(DamageTypes, damageType)}) DamageBone(${getKeyByValue(PedBones, damageBone[1])})`);
 
     console.log(`${suspectName} killed ${victimName} with ${weaponHash}. Critical(${criticalHit}) Cause(${getKeyByValue(DamageTypes, damageType)}) Killstreak(${killStreaks[suspect]})`);
-    emitNet('twiliKillfeed:update_feed', -1, suspectName, victimName, weaponHash, damageType, criticalHit, killStreaks[suspect]);
+    emitNet('twiliKillfeed:update_feed', -1, suspect, victim, weaponHash, damageType, criticalHit, killStreaks[suspect]);
 
 
 

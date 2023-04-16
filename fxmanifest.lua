@@ -7,13 +7,15 @@ author 'Elena Winters'
 description 'A Team Fortress 2 inspired killfeed with multiple styles to choose from'
 version 'dev_0.1.0.23.4.15'
 
--- ui_page 'html/index.html'
+ui_page 'html/index.html'
 
--- files {
---     'html/index.html',
---     'html/index.css',
---     'html/selector.js'
--- }
+files {
+    'html/index.html',
+    'html/killfeed.css',
+    'html/killfeed.js',
+
+    'icons/skull.png'
+}
 
 -- shared_scripts {
 --     'shared/globals.lua'
