@@ -31,5 +31,5 @@ function addKillFeedMessage(killer, victim, weapon) {
     // Remove message after a certain duration (e.g., 5 seconds)
     setTimeout(() => {
         killfeedContainer.removeChild(message);
-    }, 10000);
+    }, 5000);
 }

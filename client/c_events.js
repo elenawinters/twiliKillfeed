@@ -40,9 +40,11 @@ on('gameEventTriggered', function (eventName, data) {
 
 
 onNet('twiliKillfeed:update_feed', (suspect, suspectName, victim, victimName, weaponHash, damageType, criticalHit, killStreak) => {
-    console.log(`${suspect} killed ${victim} with ${weaponHash}`);
+    console.log(`${suspectName}(${suspect}) killed ${victimName}(${victim}) with ${weaponHash}`);
     let involved = false;
     if (suspect == NETID || victim == NETID) { involved = true; }
+    if (suspectName == null) { suspectName = 'NPC'; }
+    if (suspect == victim) { suspectName = ''; }
     SendNUIMessage({action: 'update_feed',
         payload: {
             killer: suspectName,
