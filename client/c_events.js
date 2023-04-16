@@ -18,7 +18,7 @@ on('gameEventTriggered', function (eventName, data) {
         }
     }
 
-    const victimDied = data[3 + offset];
+    // const victimDied = data[3 + offset];
     const weaponHash = data[4 + offset];
     // const isMelee = data[9 + offset];
     // const damageType = data[10 + offset];
@@ -26,8 +26,8 @@ on('gameEventTriggered', function (eventName, data) {
     const damageBone = GetPedLastDamageBone(victim);
 
     // if (victimDied && IsEntityDead(victim) && (victim == PLAYER || suspect == PLAYER)) {  // this line basically says that we are in the killfeed somewhere
-    if (victim == PLAYER && victimDied && IsEntityDead(victim)) {  // REMINDER: ONLY SEND AS VICTIM. Weird desync can happen, only the victim is sure of their death.
-    // if (victimDied && IsEntityDead(victim)) {  // This is only for testing
+    if (victim == PLAYER && IsEntityDead(victim)) {  // REMINDER: ONLY SEND AS VICTIM. Weird desync can happen, only the victim is sure of their death.
+    // if (IsEntityDead(victim)) {  // This is only for testing
         // console.log('The player is part of the killfeed');
         // console.log(`IsPedAPlayer Victim: ${IsPedAPlayer(victim)}`);
         // console.log(`IsPedAPlayer Suspect: ${IsPedAPlayer(suspect)}`);
