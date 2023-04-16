@@ -43,8 +43,8 @@ onNet('twiliKillfeed:update_feed', (suspect, suspectName, victim, victimName, we
     console.log(`${suspectName}(${suspect}) killed ${victimName}(${victim}) with ${weaponHash}`);
     let involved = false;
     if (suspect == NETID || victim == NETID) { involved = true; }
+    if (suspect == victim || damageType == 0) { suspectName = ''; }
     if (suspectName == null) { suspectName = 'NPC'; }
-    if (suspect == victim) { suspectName = ''; }
     SendNUIMessage({action: 'update_feed',
         payload: {
             killer: suspectName,
