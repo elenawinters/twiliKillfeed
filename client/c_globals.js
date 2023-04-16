@@ -1,6 +1,6 @@
 const BUILD = GetGameBuildNumber();
 const GAME = GetGameName();
 
-const PLAYER = GetPlayerPed(-1);
+function PLAYER() { return GetPlayerPed(-1); }
 
-const NETID = GetPlayerServerId(NetworkGetPlayerIndexFromPed(PLAYER));
+const NETID = GetPlayerServerId(NetworkGetPlayerIndexFromPed(PLAYER()));
