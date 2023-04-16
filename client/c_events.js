@@ -39,14 +39,14 @@ on('gameEventTriggered', function (eventName, data) {
 })
 
 
-onNet('twiliKillfeed:update_feed', (suspect, victim, weaponHash, damageType, criticalHit, killStreak) => {
+onNet('twiliKillfeed:update_feed', (suspect, suspectName, victim, victimName, weaponHash, damageType, criticalHit, killStreak) => {
     console.log(`${suspect} killed ${victim} with ${weaponHash}`);
     let involved = false;
     if (suspect == NETID || victim == NETID) { involved = true; }
     SendNUIMessage({action: 'update_feed',
         payload: {
-            killer: GetPlayerName(suspect - 1),
-            victim: GetPlayerName(victim - 1),
+            killer: suspectName,
+            victim: victimName,
             icon: weaponHash,
             type: damageType,
             crit: criticalHit,
