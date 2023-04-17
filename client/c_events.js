@@ -29,8 +29,8 @@ on('gameEventTriggered', function (eventName, data) {
     // console.log(victim)
 
     // if (victimDied && IsEntityDead(victim) && (victim == PLAYER || suspect == PLAYER)) {  // this line basically says that we are in the killfeed somewhere
-    // if (victim == PLAYER() && victimDied && IsEntityDead(victim)) {  // REMINDER: ONLY SEND AS VICTIM. Weird desync can happen, only the victim is sure of their death.
-    if (victimDied && IsEntityDead(victim)) {  // This is only for testing
+    if (victim == PLAYER() && victimDied && IsEntityDead(victim)) {  // REMINDER: ONLY SEND AS VICTIM. Weird desync can happen, only the victim is sure of their death.
+    // if (victimDied && IsEntityDead(victim)) {  // This is only for testing
         // console.log('Did we die?');
         emitNet("twiliKillfeed:notify_update", GetPlayerServerId(NetworkGetPlayerIndexFromPed(suspect)), GetPlayerServerId(NetworkGetPlayerIndexFromPed(victim)), weaponHash, damageType, damageBone)
 
