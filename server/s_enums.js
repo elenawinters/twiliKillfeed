@@ -9,7 +9,7 @@ const DamageTypes = {
     FallHeliCrash: 8,
     Electric: 10,
     BarbedWire: 11,
-    Extinguisher: 12,
+    Extinguisher: 12, // this can do damage?
     TearGas: 13,
     WaterCannon: 14
 }

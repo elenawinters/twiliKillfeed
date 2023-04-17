@@ -9,11 +9,19 @@
 }
 
 
+.kill-involved {
+    background-color: #F1E9CB;
+}
+
+.kill-standard {
+    background-color: #202020;
+}
+
+
 .killfeed-message {
     font-family: Verdana, sans-serif;
-    background-color: #202020;
     display: flex;
-    /* justify-content: center; */
+    justify-content: right;
     align-items: center;
     height: 3vh;
     margin: 0;
@@ -23,7 +31,7 @@
 	/* background-color: rgba(0, 0, 0, 0.4); */
 	/* color: rgb(232, 184, 255); */
 	/* text-align: left; */
-	padding: 0.5vmin 1vmin;
+	padding: 0.1vmin 1vmin;
 	border-radius: 1vmin;
 
 }
@@ -36,15 +44,28 @@
     border-radius: 4px;
 }
 
-.killer,
-.victim {
+.killer-enemy,
+.victim-enemy {
     font-size: 20px;
-    color: #FFF;
-    text-shadow: 0 0 2px #000;
+    color: #A3574A;
+    /* text-shadow: 0 0 2px #000; */
 }
 
-.kill-icon {
+.killer-friend,
+.victim-friend {
+    font-size: 20px;
+    color: #557C83;
+    /* text-shadow: 0 0 2px #000; */
+}
+
+.kill-icon-involved {
     /* width: 48px;
     height: 32px; */
     margin: 8px 8px;
+}
+
+.kill-icon-standard {
+    margin: 8px 8px;
+    -webkit-filter: invert(1);
+    filter: invert(1);
 }
