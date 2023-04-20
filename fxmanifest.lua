@@ -13,7 +13,8 @@ files {
     'html/index.html',
     'html/killfeed.css',
     'html/killfeed.js',
-
+    
+    'icons/crit.png',
     'icons/skull.png'
 }
 

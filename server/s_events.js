@@ -8,10 +8,10 @@ on("playerDropped", (reason) => {
 });
 
 
-onNet('twiliKillfeed:notify_update', (suspect, victim, weaponHash, damageType, damageBone) => {
+onNet('twiliKillfeed:notify_update', (suspect, victim, situation) => {
     // if (suspect == 0 || victim == 0) { console.log("Suspect or Victim is not a player"); }
     // let suspectName, victimName = '**Invalid** (Not a Player)';
-    let suspectName, victimName = null;
+    let [suspectName, victimName] = [null, null];
     // let suspectName = undefined;
     // let victimName = undefined;
     
@@ -28,17 +28,17 @@ onNet('twiliKillfeed:notify_update', (suspect, victim, weaponHash, damageType, d
         killStreaks[victim] = 0;
     }
     
-    let criticalHit = false;
-    if (damageBone[1] == 0x796E) {  criticalHit = true;  }  // this is the head bone when testing against peds, unsure on players
+    // let criticalHit = false;
+    // if (situation.damageBone[1] == 0x796E) {  criticalHit = true;  }  // this is the head bone when testing against peds, unsure on players
 
-    if (suspect == victim || damageType == 0) { suspectName = ''; }
+    if (suspect == victim || situation.damageType == 0) { suspectName = ''; }
     if (suspectName == null) { suspectName = 'NPC'; }
     if (victimName == null) { victimName = 'NPC'; }
 
     // console.log(`${suspectName} killed ${victimName} with ${weaponHash}. DamageType(${getKeyByValue(DamageTypes, damageType)}) DamageBone(${getKeyByValue(PedBones, damageBone[1])})`);
 
-    console.log(`${suspectName}(${suspect}) killed ${victimName}(${victim}) with ${weaponHash}. Critical(${criticalHit}) Cause(${getKeyByValue(DamageTypes, damageType)}) Bone(${getKeyByValue(PedBones, damageBone[1])}) Killstreak(${killStreaks[suspect]})`);
-    emitNet('twiliKillfeed:update_feed', -1, suspect, suspectName, victim, victimName, weaponHash, damageType, criticalHit, killStreaks[suspect]);
+    console.log(`${suspectName}(${suspect}) killed ${victimName}(${victim}). Situation: ${JSON.stringify(situation)}`);
+    emitNet('twiliKillfeed:update_feed', -1, suspect, suspectName, victim, victimName, situation, killStreaks[suspect]);
 
 
 

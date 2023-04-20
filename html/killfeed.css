@@ -58,14 +58,28 @@
     /* text-shadow: 0 0 2px #000; */
 }
 
-.kill-icon-involved {
-    /* width: 48px;
-    height: 32px; */
+.kill-icons {
+    display: flex;
+    align-items: center;
     margin: 8px 8px;
 }
 
+.kill-icon-background {
+    position: absolute;
+    /* margin: 8px 8px; */
+}
+
+
+.kill-icon-involved {
+    z-index: 1;
+    /* position: absolute; */
+    /* margin: 8px 8px; */
+}
+
 .kill-icon-standard {
-    margin: 8px 8px;
+    z-index: 1;
+    /* position: absolute; */
+    /* margin: 8px 8px; */
     -webkit-filter: invert(1);
     filter: invert(1);
 }
