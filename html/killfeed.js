@@ -41,6 +41,12 @@ function addKillFeedMessage(killer, victim, situation, streak, involvement) {
         background = `<img class="kill-icon-background" src="https://cfx-nui-twiliKillfeed/icons/crit.png" alt="Crit" />`
     }
 
+    let deathIcon
+    switch(situation.causeOfDeath) {
+        default:
+            deathIcon = situation.causeOfDeath
+    }
+
     // Generate kill feed message content based on provided information
     // Example: <killer> <weapon_icon> <victim> (<assisted_by>)
     // https://stackoverflow.com/a/9891041
@@ -48,12 +54,12 @@ function addKillFeedMessage(killer, victim, situation, streak, involvement) {
 		<span class="killer-${suspect_involvement}">${killer}</span>
         <div class="kill-icons">
             ${background}
-		    <img class="kill-icon-${involvetype}" src="https://cfx-nui-twiliKillfeed/icons/skull.png" alt="Kill Icon" />
+		    <img class="kill-icon-${involvetype}" src="https://cfx-nui-twiliKillfeed/icons/${deathIcon}.png" alt="Kill Icon" onerror="this.onerror=null;this.src='https://cfx-nui-twiliKillfeed/icons/skull.png';" />
         </div>
 		<span class="victim-${victim_involvement}">${victim}</span>
 	`;
 
-    console.log(message.innerHTML);
+    // console.log(message.innerHTML);
 
     // Add message to kill feed container
     killfeedContainer.appendChild(message);

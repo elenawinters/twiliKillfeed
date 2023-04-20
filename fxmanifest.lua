@@ -14,8 +14,7 @@ files {
     'html/killfeed.css',
     'html/killfeed.js',
     
-    'icons/crit.png',
-    'icons/skull.png'
+    'icons/*.png'
 }
 
 -- shared_scripts {

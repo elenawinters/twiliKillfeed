@@ -62,22 +62,37 @@
     display: flex;
     align-items: center;
     margin: 8px 8px;
+    justify-content: center;
+    position: relative;
+    /* width: 0.1vmin; */
 }
+
+
 
 .kill-icon-background {
     position: absolute;
+    /* left: 50%;
+    top: 50%; */
     /* margin: 8px 8px; */
+    /* height: 0.1vh; */
+    max-height: 28px;
+    width: auto;
 }
 
 
 .kill-icon-involved {
     z-index: 1;
+    max-height: 28px;
+    width: auto;
     /* position: absolute; */
     /* margin: 8px 8px; */
+    /* height: 0.1vh; */
 }
 
 .kill-icon-standard {
     z-index: 1;
+    max-height: 28px;
+    width: auto;
     /* position: absolute; */
     /* margin: 8px 8px; */
     -webkit-filter: invert(1);
