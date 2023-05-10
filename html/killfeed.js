@@ -9,7 +9,7 @@ window.addEventListener("message", (event) => {
             data.payload.situation,
             data.payload.streak,
             data.payload.involvement
-        )
+        );
 	}
 });
 
@@ -19,9 +19,9 @@ function addKillFeedMessage(killer, victim, situation, streak, involvement) {
     // Create kill feed message HTML element
     const message = document.createElement('div');
     message.classList.add('killfeed-message');
-    let involvetype = 'standard'
+    let involvetype = 'standard';
     if (involvement != 'enemy') {
-        involvetype = 'involved'
+        involvetype = 'involved';
     }
 
     let suspect_involvement = 'enemy';
@@ -35,16 +35,23 @@ function addKillFeedMessage(killer, victim, situation, streak, involvement) {
 
     message.classList.add(`kill-${involvetype}`);
 
+    
+    let killFeedDisplay = '';
+    // if (streak > 0) {
+    //     killFeedDisplay = streak;
+    // }
+
     // if (involved == true) { message.classList.add('kill-involved'); } else { message.classList.add('kill-standard'); }
     let background = ''
     if (situation.isCritical) {
-        background = `<img class="kill-icon-background" src="https://cfx-nui-twiliKillfeed/icons/crit.png" alt="Crit" />`
+        background = `<img class="kill-icon-background" src="https://cfx-nui-twiliKillfeed/icons/crit.png" alt="Crit" />`;
     }
 
-    let deathIcon
-    switch(situation.causeOfDeath) {
+    let deathIcon;
+    switch(situation.weaponHash) {
         default:
-            deathIcon = situation.causeOfDeath
+            deathIcon = situation.weaponHash;
+            break;
     }
 
     // Generate kill feed message content based on provided information
@@ -52,6 +59,7 @@ function addKillFeedMessage(killer, victim, situation, streak, involvement) {
     // https://stackoverflow.com/a/9891041
     message.innerHTML = `
 		<span class="killer-${suspect_involvement}">${killer}</span>
+        ${killFeedDisplay}
         <div class="kill-icons">
             ${background}
 		    <img class="kill-icon-${involvetype}" src="https://cfx-nui-twiliKillfeed/icons/${deathIcon}.png" alt="Kill Icon" onerror="this.onerror=null;this.src='https://cfx-nui-twiliKillfeed/icons/skull.png';" />
@@ -67,7 +75,22 @@ function addKillFeedMessage(killer, victim, situation, streak, involvement) {
     // Remove message after a certain duration (e.g., 5 seconds)
     setTimeout(() => {
         killfeedContainer.removeChild(message);
-    }, 5000);
+    }, 15000);
+}
+
+
+// this only contains the default weapons. to add weapons, just add an image with the name being the hash in a PNG format, for example, 324215364.png
+// this represents a texture atlas. Format is [ATLAS, *COORDS]
+// this will eventually be moved to a file defining the atlas. for now, this is gonna be 
+function getTextureCoordinates(hash) {
+    switch (hash) {
+        case -1716189206:
+            return ['update', [233, 173], [233, 211], [418, 211], [418, 173]]
+            break;
+        case 324215364:
+            return ['update', [14, 402], [14, 477], [28, 477] [28, 439], [107, 439], [107, 516], [230, 516], [230, 462], [298, 462], [298, 423], [262, 423], [262, 402]]
+            break;
+    }
 }
 
 
