@@ -33,7 +33,6 @@ server_scripts {
 }
 
 client_scripts {
-    'client/c_globals.js',
     'client/c_events.js'
 }
 

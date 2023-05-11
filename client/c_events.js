@@ -1,5 +1,5 @@
 console.log('twiliKillfeed is running on the client.')
-console.log(`Code path is set to ${GAME}`);
+console.log(`Code path is set to ${exports.twiliCore.GAME()}`);
 
 let attacker = 0;
 
@@ -12,8 +12,8 @@ onNet('twiliCore:damage:event', (suspect, victim, situation) => {
     
     let involvement = 'enemy';
     // console.log(NETID);
-    if (suspect.networkIndex == PLAYER_NETID) {involvement = 'suspect'}
-    if (victim.networkIndex == PLAYER_NETID) {involvement = 'victim'}
+    if (suspect.networkIndex == exports.twiliCore.PLAYER_NETID()) {involvement = 'suspect'}
+    if (victim.networkIndex == exports.twiliCore.PLAYER_NETID()) {involvement = 'victim'}
 
     let killStreak = 0;
     // console.log(involvement);
