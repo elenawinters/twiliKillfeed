@@ -57,5 +57,6 @@ causesOfDeath = {
     MiniSMG: -1121678507,
 
     // Assasult Rifles
+    // lol i got bored and didn't finish this. plus, it changes for RedM. this file will probably be deleted soon
 
 }
