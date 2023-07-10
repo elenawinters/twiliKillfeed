@@ -2,6 +2,6 @@
 
 This is a simple TF2 inspired killfeed for FiveM and RedM
 
-## Dependency 
+## Dependencies
 
-This script relies on twiliCore for damage information.
+Currently, the only dependency is [twiliCore](https://github.com/elenawinters/twiliCore).
