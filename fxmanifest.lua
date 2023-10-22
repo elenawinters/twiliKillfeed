@@ -5,7 +5,7 @@ rdr3_warning 'I acknowledge that this is a prerelease build of RedM, and I am aw
 
 author 'Elena Winters'
 description 'A Team Fortress 2 inspired killfeed with multiple styles to choose from'
-version 'dev_0.1.0+23.10.20'
+version 'dev_0.1.0+23.10.21'
 
 dependencies {
     'twiliCore'
