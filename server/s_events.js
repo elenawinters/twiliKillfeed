@@ -18,20 +18,20 @@ onNet('twiliKillfeed:streak:fetch', (suspect, victim, situation) => {
 
     // console.log(suspect)
     
-    if (suspect['entity'] != 0 && suspect['entity'] != undefined && suspect['entity'] != -1) {
-        if (!killStreaks.hasOwnProperty(suspect['entity'])) { killStreaks[suspect['entity']] = 0; }
-        killStreaks[suspect['entity']]++;
+    if (suspect['networkIndex'] != 0 && suspect['networkIndex'] != undefined && suspect['networkIndex'] != -1) {
+        if (!killStreaks.hasOwnProperty(suspect['networkIndex'])) { killStreaks[suspect['networkIndex']] = 0; }
+        killStreaks[suspect['networkIndex']]++;
     }
 
-    if (victim['entity'] != 0 && victim['entity'] != undefined && victim['entity'] != -1) {
-        // killStreaks.splice(killStreaks.indexOf(victim['entity']), 1)
-        // killStreaks[victim['entity']] = 0;
-        delete killStreaks[victim['entity']]
+    if (victim['networkIndex'] != 0 && victim['networkIndex'] != undefined && victim['networkIndex'] != -1) {
+        // killStreaks.splice(killStreaks.indexOf(victim['networkIndex']), 1)
+        // killStreaks[victim['networkIndex']] = 0;
+        delete killStreaks[victim['networkIndex']]
     }
 
     console.log(killStreaks)
 
-    emitNet('twiliKillfeed:update', -1, suspect, victim, situation, killStreaks[suspect['entity']]);
+    emitNet('twiliKillfeed:update', -1, suspect, victim, situation, killStreaks[suspect['networkIndex']]);
     
     // let criticalHit = false;
     // if (situation.damageBone[1] == 0x796E) {  criticalHit = true;  }  // this is the head bone when testing against peds, unsure on players
