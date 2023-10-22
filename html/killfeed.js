@@ -35,11 +35,12 @@ function addKillFeedMessage(killer, victim, situation, streak, involvement) {
 
     message.classList.add(`kill-${involvetype}`);
 
+    console.log(streak)
     
     let killFeedDisplay = '';
-    // if (streak > 0) {
-    //     killFeedDisplay = streak;
-    // }
+    if (streak > 0) {
+        killFeedDisplay = streak;
+    }
 
     // if (involved == true) { message.classList.add('kill-involved'); } else { message.classList.add('kill-standard'); }
     let background = ''
@@ -59,10 +60,10 @@ function addKillFeedMessage(killer, victim, situation, streak, involvement) {
     // https://stackoverflow.com/a/9891041
     message.innerHTML = `
 		<span class="killer-${suspect_involvement}">${killer}</span>
-        ${killFeedDisplay}
+        <span style="margin-left: 8px">${killFeedDisplay}</span>
         <div class="kill-icons">
             ${background}
-		    <img class="kill-icon-${involvetype}" src="https://cfx-nui-twiliKillfeed/icons/${deathIcon}.png" alt="Kill Icon" onerror="this.onerror=null;this.src='https://cfx-nui-twiliKillfeed/icons/skull.png';" />
+		    <img class="kill-icon-${involvetype}" src="/icons/${deathIcon}.png" alt="Kill Icon" onerror="this.onerror=null;this.src='/icons/skull.png';" />
         </div>
 		<span class="victim-${victim_involvement}">${victim}</span>
 	`;

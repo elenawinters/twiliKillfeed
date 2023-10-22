@@ -1,5 +1,7 @@
 #killfeed-container {
     position: fixed;
+    /* justify-content: right;
+    float: right; */
     top: 6vh;  /*10 if wanted, 6 if not*/
     right: 1vw;
 	/* margin: 10; */
@@ -28,7 +30,9 @@
     align-items: center;
     height: 3vh;
     margin: 0;
-    width: auto;
+    /* width: auto; */
+    width: fit-content;
+    /* float: right; */
 
 	/* visibility: visible; */
 	/* width: 20vw; */

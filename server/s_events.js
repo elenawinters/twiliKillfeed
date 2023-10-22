@@ -4,27 +4,34 @@ let killStreaks = {}
 
 on("playerDropped", (reason) => {
     // console.log(`Player ${GetPlayerName(global.source)} dropped (Reason: ${reason}).`)
+    // killStreaks.splice(killStreak.indexOf(global.source), 1)
     delete killStreaks[global.source];
 });
 
 
-onNet('twiliKillfeed:fetch_killstreak', (suspect, victim) => {
+onNet('twiliKillfeed:streak:fetch', (suspect, victim, situation) => {
     // if (suspect == 0 || victim == 0) { console.log("Suspect or Victim is not a player"); }
     // let suspectName, victimName = '**Invalid** (Not a Player)';
-    let [suspectName, victimName] = [null, null];
+    // let [suspectName, victimName] = [null, null];
     // let suspectName = undefined;
     // let victimName = undefined;
+
+    // console.log(suspect)
     
-    if (suspect != 0 && suspect != undefined) {
-        if (!killStreaks.hasOwnProperty(suspect)) { killStreaks[suspect] = 0; }
-        killStreaks[suspect]++;
+    if (suspect['entity'] != 0 && suspect['entity'] != undefined && suspect['entity'] != -1) {
+        if (!killStreaks.hasOwnProperty(suspect['entity'])) { killStreaks[suspect['entity']] = 0; }
+        killStreaks[suspect['entity']]++;
     }
 
-    if (victim != 0 && victim != undefined) { 
-        killStreaks[victim] = 0;
+    if (victim['entity'] != 0 && victim['entity'] != undefined && victim['entity'] != -1) {
+        // killStreaks.splice(killStreaks.indexOf(victim['entity']), 1)
+        // killStreaks[victim['entity']] = 0;
+        delete killStreaks[victim['entity']]
     }
 
-    emitNet('twiliKillfeed:return_killstreak', -1, killStreaks[suspect]);
+    console.log(killStreaks)
+
+    emitNet('twiliKillfeed:update', -1, suspect, victim, situation, killStreaks[suspect['entity']]);
     
     // let criticalHit = false;
     // if (situation.damageBone[1] == 0x796E) {  criticalHit = true;  }  // this is the head bone when testing against peds, unsure on players
